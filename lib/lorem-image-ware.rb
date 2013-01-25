@@ -25,17 +25,25 @@ module LoremImageWare
       "/lorem"
     end
 
+    def default_lorem_image_height
+      200
+    end
+
+    def default_lorem_image_width
+      400
+    end
+
     def lorem_image_path(options = {})
-      height = options.fetch(:height, 200)
-      width  = options.fetch(:width, 400)
+      height = options.fetch(:height, default_lorem_image_height)
+      width  = options.fetch(:width, default_lorem_image_width)
       tag    = options.fetch(:tag, "abstract")
 
       "#{lorem_image_root}/image/#{width}/#{height}/#{tag}?r=#{rand(99)}"
     end
 
     def lorem_image_tag(options = {})
-      height     = options.fetch(:height, 200)
-      width      = options.fetch(:width, 400)
+      height     = options.fetch(:height, default_lorem_image_height)
+      width      = options.fetch(:width, default_lorem_image_width)
       html_class = [options[:class], "lorem-image"].compact.join(" ")
 
       html = %Q{<img src="#{lorem_image_path(options)}"}
