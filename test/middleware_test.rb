@@ -1,11 +1,9 @@
 require_relative "./test_helper"
 require "ostruct"
 
-class TestCase < MiniTest::Unit::TestCase
+class TestMiddleware < MiniTest::Unit::TestCase
   include Rack::Test::Methods
-end
 
-class TestPassThru < TestCase
   def app
     Rack::Builder.new do
       use LoremImageWare::Middleware
@@ -21,15 +19,6 @@ class TestPassThru < TestCase
   def test_hello
     get "/hello"
     assert_equal "path = /hello", last_response.body
-  end
-end
-
-class TestSimpleLorem < TestCase
-  def app
-    Rack::Builder.new do
-      use LoremImageWare::Middleware
-      run lambda { |env| [200, { 'Content-Type' => "text/plain" }, ["path = #{env['PATH_INFO']}"]] }
-    end
   end
 
   def test_width_and_height
