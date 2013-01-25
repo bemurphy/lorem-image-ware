@@ -25,10 +25,6 @@ class TestPassThru < TestCase
 end
 
 class TestSimpleLorem < TestCase
-  def setup
-    @provider = MiniTest::Mock.new
-  end
-
   def app
     Rack::Builder.new do
       use LoremImageWare::Middleware
