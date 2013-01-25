@@ -10,9 +10,13 @@ module LoremImageWare
 
     def url(params)
       tag = params[:tag] || "abstract"
-      url = ["http://lorempixel.com", @grayscale ? "g" : nil, params[:width], params[:height], tag].compact.join("/")
-      url += "/?r=#{rand(20)}"
-      url
+
+      [
+        "http://lorempixel.com",
+        @grayscale ? "g" : nil,
+        params[:width], params[:height], tag,
+        "?r=#{rand(20)}"
+      ].compact.join("/")
     end
   end
 
@@ -34,7 +38,9 @@ module LoremImageWare
       width      = options.fetch(:width, 400)
       html_class = [options[:class], "lorem-image"].compact.join(" ")
 
-      %Q{<img src="#{lorem_image_path(options)}" class="#{html_class}" width="#{width}" height="#{height}" style="height: #{height}px; width: #{width}px;" />}
+      html = %Q{<img src="#{lorem_image_path(options)}"}
+      html += %Q{ class="#{html_class}" width="#{width}" height="#{height}"}
+      html += %Q{ style="height: #{height}px; width: #{width}px;" />}
     end
   end
 
