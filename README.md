@@ -53,6 +53,10 @@ lorem_image_tag(:height => 400, :width => 200, :tag => "sports", :class => "some
 The helper will add a class of `lorem-image` to tags for you, as well as populate the dimensions
 and set inline height and width styling on the image.
 
+## Todo
+
+Use cache-control and ETag support for browser caching
+
 ## Contributing
 
 1. Fork it
