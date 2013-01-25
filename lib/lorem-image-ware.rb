@@ -65,7 +65,7 @@ module LoremImageWare
     def _call(env)
       request = Rack::Request.new(env)
 
-      if request.fullpath =~ %r{^#{root}/image/(\d+)/(\d+)/?(/(\S+))?}i
+      if request.fullpath =~ %r{^#{root}/image/(\d+)/(\d+)/?(/?([a-z]+))?}i
         url = provider.url(width: $1, height: $2, tag: $4)
         serve_image(url)
       else
