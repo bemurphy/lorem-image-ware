@@ -7,9 +7,9 @@ class TestLoremPixelProvider < MiniTest::Unit::TestCase
     assert_match %r{http://lorempixel.com/400/200/abstract/\?r=\d+$}, url
   end
 
-  def test_optional_tag
+  def test_optional_type
     provider = LoremImageWare::LoremPixelProvider.new
-    url = provider.url(width: 200, height: 100, tag: "sports")
+    url = provider.url(width: 200, height: 100, type: "sports")
     assert_match %r{http://lorempixel.com/200/100/sports/\?r=\d+$}, url
   end
 

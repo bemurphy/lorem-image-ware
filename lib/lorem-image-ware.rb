@@ -9,12 +9,12 @@ module LoremImageWare
     end
 
     def url(params)
-      tag = params[:tag] || "abstract"
+      type = params[:type] || "abstract"
 
       [
         "http://lorempixel.com",
         @grayscale ? "g" : nil,
-        params[:width], params[:height], tag,
+        params[:width], params[:height], type,
         "?r=#{rand(20)}"
       ].compact.join("/")
     end
@@ -36,9 +36,9 @@ module LoremImageWare
     def lorem_image_path(options = {})
       height = options.fetch(:height, default_lorem_image_height)
       width  = options.fetch(:width, default_lorem_image_width)
-      tag    = options.fetch(:tag, "abstract")
+      type   = options.fetch(:type, "abstract")
 
-      "#{lorem_image_root}/image/#{width}/#{height}/#{tag}?r=#{rand(99)}"
+      "#{lorem_image_root}/image/#{width}/#{height}/#{type}?r=#{rand(99)}"
     end
 
     def lorem_image_tag(options = {})
@@ -66,7 +66,7 @@ module LoremImageWare
       request = Rack::Request.new(env)
 
       if request.fullpath =~ %r{^#{root}/image/(\d+)/(\d+)/?(/?([a-z]+))?}i
-        url = provider.url(width: $1, height: $2, tag: $4)
+        url = provider.url(width: $1, height: $2, type: $4)
         serve_image(url)
       else
         @app.call(env)

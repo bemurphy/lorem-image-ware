@@ -29,7 +29,7 @@ class TestMiddleware < MiniTest::Unit::TestCase
     assert last_response.headers["Content-Length"].to_i > 0
   end
 
-  def test_tag_param
+  def test_type_param
     get "/lorem/image/400/200/sports"
     assert_equal 200, last_response.status
     assert_equal "image/jpeg", last_response.headers["Content-Type"]
