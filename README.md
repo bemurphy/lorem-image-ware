@@ -10,7 +10,7 @@ that after a few page loads, images should load much faster.  Without such local
 caching you will be stuck hammering their server on every page load, and waiting a
 few seconds for images to fill in.
 
-It is recommended to only load the middleware in development environtments.
+It is recommended to only load the middleware in development environments.
 
 ## Installation
 
