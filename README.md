@@ -1,4 +1,4 @@
-# Lorem::Image::Ware
+# LoremImageWare
 
 Rack middleware for proxying requests to [lorempixel.com](http://lorempixel.com)
 
