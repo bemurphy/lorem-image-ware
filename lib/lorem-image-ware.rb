@@ -16,6 +16,28 @@ module LoremImageWare
     end
   end
 
+  module Helpers
+    def lorem_image_root
+      "/lorem"
+    end
+
+    def lorem_image_path(options = {})
+      height = options.fetch(:height, 200)
+      width  = options.fetch(:width, 400)
+      tag    = options.fetch(:tag, "abstract")
+
+      "#{lorem_image_root}/image/#{width}/#{height}/#{tag}?r=#{rand(99)}"
+    end
+
+    def lorem_image_tag(options = {})
+      height     = options.fetch(:height, 200)
+      width      = options.fetch(:width, 400)
+      html_class = [options[:class], "lorem-image"].compact.join(" ")
+
+      %Q{<img src="#{lorem_image_path(options)}" class="#{html_class}" width="#{width}" height="#{height}" style="height: #{height}px; width: #{width}px;" />}
+    end
+  end
+
   class Middleware
     def initialize(app, options = {})
       @app     = app

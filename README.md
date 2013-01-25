@@ -40,6 +40,19 @@ If you wish to serve off a directory other than the default `/lorem`, pass the `
 use LoremImageWare::Middleware, :root => "/random_images"
 ```
 
+There is a small Helpers module you can include for generating lorem image tags for you.  For example
+in Sinatra classical:
+
+```ruby
+helpers LoremImageWare::Helpers
+
+# In a view
+lorem_image_tag(:height => 400, :width => 200, :tag => "sports", :class => "some-class")
+```
+
+The helper will add a class of `lorem-image` to tags for you, as well as populate the dimensions
+and set inline height and width styling on the image.
+
 ## Contributing
 
 1. Fork it
